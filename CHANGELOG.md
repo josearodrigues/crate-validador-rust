@@ -12,6 +12,13 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/) e este p
 
 ### Fixed
 
+## [0.1.2] - 2026-07-17
+
+### Changed
+
+- Renomeados exemplos e documentação para refletir o novo nome da crate.
+- Melhorias no README.
+
 ## [0.1.1] - 2026-07-17
 
 ### Added
