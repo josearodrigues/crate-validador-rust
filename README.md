@@ -6,13 +6,13 @@
 
 <p align="center">
 BBiblioteca Rust para validação de CPF utilizando o algoritmo oficial da Receita Federal.
-</p>
 
 [![Crates.io](https://img.shields.io/crates/v/validador.svg)](https://crates.io/crates/validador)
 [![Documentation](https://docs.rs/validador/badge.svg)](https://docs.rs/validador)
 [![Build Status](https://github.com/josearodrigues/crate-validador-rust/actions/workflows/rust.yml/badge.svg)](https://github.com/josearodrigues/crate-validador-rust/actions/workflows/rust.yml)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Dual License](https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-blue.svg)](LICENSE-MIT)
 [![Rust Edition](https://img.shields.io/badge/Rust-2024-orange.svg)](https://www.rust-lang.org)
+</p>
 
 Uma biblioteca simples, rápida e sem dependências externas para validar números de **CPF (Cadastro de Pessoas Físicas)**.
 
