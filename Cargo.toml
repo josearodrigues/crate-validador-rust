@@ -9,7 +9,6 @@ repository = "https://github.com/josearodrigues/crate-validador-rust"
 homepage = "https://github.com/josearodrigues/crate-validador-rust"
 documentation = "https://docs.rs/validador"
 readme = "README.md"
-
 keywords = [
     "cpf",
     "validator",
@@ -17,10 +16,8 @@ keywords = [
     "brazil",
     "document"
 ]
-
 categories = [
     "algorithms",
     "value-formatting"
 ]
-
 rust-version = "1.96"
