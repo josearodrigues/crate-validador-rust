@@ -3,4 +3,31 @@ name = "validador"
 version = "0.1.0"
 edition = "2024"
 
-[dependencies]
+authors = ["José Américo Rodrigues"]
+
+description = "Biblioteca para validação de CPF em Rust."
+
+license = "MIT"
+
+repository = "https://github.com/josearodrigues/crate-validador-rust"
+
+homepage = "https://github.com/josearodrigues/crate-validador-rust"
+
+documentation = "https://docs.rs/validador"
+
+readme = "README.md"
+
+keywords = [
+    "cpf",
+    "validator",
+    "validation",
+    "brazil",
+    "document"
+]
+
+categories = [
+    "algorithms",
+    "value-formatting"
+]
+
+rust-version = "1.96"
