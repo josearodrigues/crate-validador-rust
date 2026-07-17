@@ -1,4 +1,4 @@
-use validador::validar_cpf;
+use crate_validador_rust::validar_cpf;
 
 fn main() {
     let cpf = "529.982.247-25";

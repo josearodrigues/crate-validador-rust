@@ -5,7 +5,7 @@
 /// # Exemplos
 ///
 /// ```
-/// use validador::validar_cpf;
+/// use crate_validador_rust::validar_cpf;
 ///
 /// assert!(validar_cpf("529.982.247-25"));
 /// assert!(validar_cpf("52998224725"));

@@ -1,4 +1,4 @@
-use validador::validar_cpf;
+use crate_validador_rust::validar_cpf;
 
 #[test]
 fn cpf_valido() {
