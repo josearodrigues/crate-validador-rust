@@ -1,5 +1,5 @@
 [package]
-name = "validador"
+name = "crate_validador_rust"
 version = "0.1.1"
 edition = "2024"
 authors = ["José Américo Rodrigues"]
