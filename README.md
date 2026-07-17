@@ -5,14 +5,18 @@
 <h1 align="center">Validador</h1>
 
 <p align="center">
-BBiblioteca Rust para validação de CPF utilizando o algoritmo oficial da Receita Federal.
-
-[![Crates.io](https://img.shields.io/crates/v/validador.svg)](https://crates.io/crates/validador)
-[![Documentation](https://docs.rs/validador/badge.svg)](https://docs.rs/validador)
-[![Build Status](https://github.com/josearodrigues/crate-validador-rust/actions/workflows/rust.yml/badge.svg)](https://github.com/josearodrigues/crate-validador-rust/actions/workflows/rust.yml)
-[![Dual License](https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-blue.svg)](LICENSE-MIT)
-[![Rust Edition](https://img.shields.io/badge/Rust-2024-orange.svg)](https://www.rust-lang.org)
+    Biblioteca Rust para validação de CPF utilizando o algoritmo oficial da Receita Federal.
 </p>
+
+<p align="center">
+    <img src="https://img.shields.io/crates/v/validador.svg" alt="Crates.io">
+    <img src="https://docs.rs/validador/badge.svg" alt="Documentation">
+    <img src="https://github.com/josearodrigues/crate-validador-rust/actions/workflows/rust.yml/badge.svg" alt="Build">
+    <img src="https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-blue.svg" alt="License">
+    <img src="https://img.shields.io/badge/Rust-2024-orange.svg" alt="Rust Edition">
+</p>
+
+---
 
 Uma biblioteca simples, rápida e sem dependências externas para validar números de **CPF (Cadastro de Pessoas Físicas)**.
 
