@@ -63,14 +63,14 @@ Adicione ao `Cargo.toml`:
 
 ```toml
 [dependencies]
-validador = "0.1"
+crate_validador_rust = "0.1.1"
 ```
 
 ou diretamente pelo GitHub
 
 ```toml
 [dependencies]
-validador = { git = "https://github.com/josearodrigues/crate-validador-rust.git" }
+crate_validador_rust = { git = "https://github.com/josearodrigues/crate-validador-rust.git" }
 ```
 
 ---
@@ -78,7 +78,7 @@ validador = { git = "https://github.com/josearodrigues/crate-validador-rust.git"
 # Uso
 
 ```rust
-use validador::validar_cpf;
+use crate_validador_rust::validar_cpf;
 
 fn main() {
 
