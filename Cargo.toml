@@ -7,7 +7,7 @@ authors = ["José Américo Rodrigues"]
 
 description = "Biblioteca para validação de CPF em Rust."
 
-license = "MIT"
+license = "MIT OR Apache-2.0"
 
 repository = "https://github.com/josearodrigues/crate-validador-rust"
 

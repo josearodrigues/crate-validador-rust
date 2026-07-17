@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="320" viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DEA584"/>
+      <stop offset="100%" stop-color="#F4C38B"/>
+    </linearGradient>
+
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6"
+          flood-color="#000000"
+          flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Fundo -->
+  <rect
+      width="1200"
+      height="320"
+      rx="20"
+      fill="url(#bg)" />
+
+  <!-- Barra superior -->
+  <rect
+      x="40"
+      y="36"
+      width="1120"
+      height="6"
+      rx="3"
+      fill="url(#accent)" />
+
+  <!-- Escudo -->
+  <g transform="translate(80,75)" filter="url(#shadow)">
+
+      <path
+        d="M70 0
+           L140 25
+           L140 95
+           C140 145 105 182 70 195
+           C35 182 0 145 0 95
+           L0 25
+           Z"
+        fill="#DEA584"/>
+
+      <circle
+          cx="70"
+          cy="78"
+          r="44"
+          fill="#111827"/>
+
+      <text
+          x="70"
+          y="93"
+          text-anchor="middle"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="48"
+          font-weight="700"
+          fill="#FFFFFF">✓</text>
+
+  </g>
+
+  <!-- Título -->
+  <text
+      x="270"
+      y="118"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="64"
+      font-weight="700"
+      fill="#FFFFFF">
+      VALIDADOR
+  </text>
+
+  <!-- Subtítulo -->
+  <text
+      x="270"
+      y="160"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="24"
+      fill="#D1D5DB">
+      Biblioteca Rust para validação de CPF
+  </text>
+
+  <!-- Linha -->
+  <line
+      x1="270"
+      y1="185"
+      x2="1080"
+      y2="185"
+      stroke="#374151"
+      stroke-width="2"/>
+
+  <!-- Features -->
+  <g
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="22"
+      fill="#E5E7EB">
+
+      <text x="270" y="225">✔ Zero dependências</text>
+
+      <text x="540" y="225">✔ Testes automatizados</text>
+
+      <text x="860" y="225">✔ Rust Edition 2024</text>
+
+      <text x="270" y="265">✔ Documentação completa</text>
+
+      <text x="540" y="265">✔ docs.rs</text>
+
+      <text x="860" y="265">✔ GitHub Actions</text>
+
+  </g>
+
+</svg>
