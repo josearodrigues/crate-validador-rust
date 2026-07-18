@@ -1,6 +1,6 @@
 [package]
 name = "crate_validador_rust"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2024"
 authors = ["José Rodrigues <americojar2014@gmail.com>"]
 description = "Biblioteca para validação de CPF em Rust."
@@ -11,6 +11,7 @@ documentation = "https://docs.rs/validador"
 readme = "README.md"
 keywords = [
     "cpf",
+    "cnpj",
     "validator",
     "validation",
     "brazil",
