@@ -1,3 +1,5 @@
+use crate::utils::{calcular_digito_mod11, para_digitos, somente_digitos, todos_iguais};
+
 /// Valida um número de CPF.
 ///
 /// Aceita CPFs com ou sem formatação.
@@ -13,49 +15,28 @@
 /// assert!(!validar_cpf("12345678900"));
 /// ```
 pub fn validar_cpf(cpf: &str) -> bool {
-    // Remove qualquer caractere que não seja número
-    let cpf: String = cpf.chars().filter(|c| c.is_ascii_digit()).collect();
+    let cpf = somente_digitos(cpf);
 
-    // CPF deve possuir 11 dígitos
     if cpf.len() != 11 {
         return false;
     }
 
-    // Converte para vetor de números
-    let numeros: Vec<u32> = cpf.chars().map(|c| c.to_digit(10).unwrap()).collect();
+    let numeros = para_digitos(&cpf);
 
-    // Rejeita CPFs com todos os dígitos iguais
-    if numeros.iter().all(|&n| n == numeros[0]) {
+    if todos_iguais(&numeros) {
         return false;
     }
 
-    // ==========================
-    // Primeiro dígito verificador
-    // ==========================
-    let soma: u32 = numeros[..9]
-        .iter()
-        .zip((2..=10).rev())
-        .map(|(&n, peso)| n * peso)
-        .sum();
+    const PESOS_DV1: [u32; 9] = [10, 9, 8, 7, 6, 5, 4, 3, 2];
+    const PESOS_DV2: [u32; 10] = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2];
 
-    let resto = soma % 11;
-    let dv1 = if resto < 2 { 0 } else { 11 - resto };
+    let dv1 = calcular_digito_mod11(&numeros[..9], &PESOS_DV1);
 
     if numeros[9] != dv1 {
         return false;
     }
 
-    // ==========================
-    // Segundo dígito verificador
-    // ==========================
-    let soma: u32 = numeros[..10]
-        .iter()
-        .zip((2..=11).rev())
-        .map(|(&n, peso)| n * peso)
-        .sum();
-
-    let resto = soma % 11;
-    let dv2 = if resto < 2 { 0 } else { 11 - resto };
+    let dv2 = calcular_digito_mod11(&numeros[..10], &PESOS_DV2);
 
     numeros[10] == dv2
 }
