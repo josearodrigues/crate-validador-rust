@@ -1,55 +1,86 @@
 <p align="center">
-    <img src="assets/banner.svg" alt="Validador" width="900">
+    <img src="assets/banner.svg" alt="crate_validador_rust" width="900">
 </p>
 
-<h1 align="center">Validador</h1>
+<h1 align="center">
+crate_validador_rust
+</h1>
 
 <p align="center">
-    Biblioteca Rust para validação de CPF utilizando o algoritmo oficial da Receita Federal.
+Biblioteca Rust para validação de documentos brasileiros.
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/crates/v/validador.svg" alt="Crates.io">
-    <img src="https://docs.rs/validador/badge.svg" alt="Documentation">
-    <img src="https://github.com/josearodrigues/crate-validador-rust/actions/workflows/rust.yml/badge.svg" alt="Build">
-    <img src="https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-blue.svg" alt="License">
-    <img src="https://img.shields.io/badge/Rust-2024-orange.svg" alt="Rust Edition">
+Validação rápida, segura e sem dependências externas.
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/crates/v/crate_validador_rust.svg" alt="Crates.io">
+<img src="https://docs.rs/crate_validador_rust/badge.svg" alt="docs.rs">
+<img src="https://github.com/josearodrigues/crate-validador-rust/actions/workflows/rust.yml/badge.svg" alt="CI">
+<img src="https://img.shields.io/badge/license-MIT%20%7C%20Apache--2.0-blue.svg" alt="License">
+<img src="https://img.shields.io/badge/Rust-2024-orange.svg" alt="Rust">
 </p>
 
 ---
 
-Uma biblioteca simples, rápida e sem dependências externas para validar números de **CPF (Cadastro de Pessoas Físicas)**.
-
-Ideal para aplicações CLI, APIs REST, microsserviços, aplicações Web, estudos da linguagem Rust e projetos que necessitem validar CPFs de forma segura e eficiente.
+Ideal para aplicações CLI, APIs REST, microsserviços, aplicações Web, estudos da linguagem Rust e projetos que necessitem validar CPFs e CNPJs de forma segura e eficiente.
 
 ---
 
-# Índice
+## Índice
 
-- [Características](#características)
+- [Por que esta crate?](#por-que-esta-crate)
+- [Recursos](#recursos)
+- [Documentos suportados](#documentos-suportados)
 - [Instalação](#instalação)
-- [Uso](#uso)
+- [Uso rápido](#uso-rápido)
 - [API](#api)
 - [Como funciona](#como-funciona)
-- [Exemplo de saída](#exemplo-de-saída)
-- [Executando os testes](#executando-os-testes)
-- [Qualidade do código](#qualidade-do-código)
-- [MSRV](#msrv)
-- [Segurança](#segurança)
+- [Objetivos de Design](#objetivos-de-design)
+- [Performance](#performance)
 - [Estrutura do projeto](#estrutura-do-projeto)
+- [Exemplos](#exemplos)
+- [Executando testes](#executando-testes)
+- [Qualidade do código](#qualidade-do-código)
 - [Roadmap](#roadmap)
+- [Versionamento](#versionamento)
+- [MSRV Policy](#msrv-policy)
+- [Segurança](#segurança)
+- [Changelog](#changelog)
+- [Comunidade](#comunidade)
 - [Contribuindo](#contribuindo)
 - [Licença](#licença)
+- [Objetivos](#objetivos)
+- [Autor](#autor)
+- [Agradecimentos](#agradecimentos)
 
 ---
 
-# Características
+## Por que esta crate?
 
-- ✅ Validação completa dos dígitos verificadores
-- ✅ Aceita CPF com ou sem máscara
-- ✅ Remove automaticamente caracteres não numéricos
-- ✅ Rejeita CPFs contendo todos os dígitos iguais
-- ✅ API simples
+Existem diversas implementações para validação de documentos brasileiros.
+Esta crate foi desenvolvida com foco em simplicidade, desempenho e aderência às boas práticas da comunidade Rust.
+
+Principais diferenciais:
+
+- API pequena e intuitiva
+- Zero dependências externas
+- Compatível com Rust Edition 2024
+- Algoritmos oficiais
+- Aceita documentos com ou sem máscara
+- Implementação totalmente segura (`safe Rust`)
+- Cobertura abrangente por testes
+
+---
+
+## Recursos
+
+- ✅ Validação de CPF
+- ✅ Validação de CNPJ
+- ✅ Aceita documentos com ou sem máscara
+- ✅ Remove caracteres não numéricos automaticamente
+- ✅ API simples e idiomática
 - ✅ Sem dependências externas
 - ✅ Cobertura por testes
 - ✅ Documentação no docs.rs
@@ -57,159 +88,113 @@ Ideal para aplicações CLI, APIs REST, microsserviços, aplicações Web, estud
 
 ---
 
-# Instalação
+## Documentos suportados
 
-Adicione ao `Cargo.toml`:
+| Documento         | Situação |
+| ----------------- | -------- |
+| CPF               | ✅       |
+| CNPJ              | ✅       |
+
+---
+
+## Instalação
+
+Via crates.io
 
 ```toml
 [dependencies]
-crate_validador_rust = "0.1.1"
+crate_validador_rust = "0.2.0"
 ```
 
-ou diretamente pelo GitHub
+Ou diretamente pelo GitHub
 
 ```toml
 [dependencies]
-crate_validador_rust = { git = "https://github.com/josearodrigues/crate-validador-rust.git" }
+crate_validador_rust = { git = "https://github.com/josearodrigues/crate-validador-rust" }
 ```
 
 ---
 
-# Uso
+## Uso rápido
 
 ```rust
-use crate_validador_rust::validar_cpf;
+use crate_validador_rust::{
+    validar_cpf,
+    validar_cnpj,
+};
 
 fn main() {
 
-    let cpf = "529.982.247-25";
+    assert!(validar_cpf("529.982.247-25"));
 
-    if validar_cpf(cpf) {
-        println!("CPF válido");
-    } else {
-        println!("CPF inválido");
-    }
+    assert!(validar_cnpj("04.252.011/0001-10"));
 
 }
 ```
 
-Também funciona sem formatação.
-
-```rust
-assert!(validar_cpf("52998224725"));
-```
-
-CPF inválido
-
-```rust
-assert!(!validar_cpf("12345678900"));
-```
-
 ---
 
-# API
+## API
 
 A biblioteca atualmente disponibiliza:
 
 ```rust
-pub fn validar_cpf(cpf: &str) -> bool
+pub fn validar_cpf(cpf: &str) -> bool;
+
+pub fn validar_cnpj(cnpj: &str) -> bool;
+
 ```
 
 | Retorno | Significado |
 |----------|-------------|
-| `true` | CPF válido |
-| `false` | CPF inválido |
+| `true` | documento válido |
+| `false` | documento inválido |
 
 ---
 
-# Como funciona
+## Como funciona
 
 A validação segue o algoritmo oficial utilizado pela Receita Federal.
 
 As etapas são:
 
 1. Remove caracteres não numéricos;
-2. Verifica se existem exatamente 11 dígitos;
-3. Rejeita sequências de dígitos iguais;
-4. Calcula o primeiro dígito verificador;
-5. Calcula o segundo dígito verificador;
-6. Compara os dígitos calculados com os informados.
+2. Rejeita sequências de dígitos iguais;
+3. Calcula o primeiro dígito verificador;
+4. Calcula o segundo dígito verificador;
+5. Compara os dígitos calculados com os informados.
 
 ---
 
-# Exemplo de saída
+## Objetivos de Design
 
-```
-CPF válido
-```
+Os princípios deste projeto são:
 
-ou
-
-```
-CPF inválido
-```
-
----
-
-# Executando os testes
-
-```
-cargo test
-```
+- Simplicidade acima de tudo
+- API estável
+- Zero dependências
+- Alto desempenho
+- Código idiomático
+- Fácil manutenção
+- Fácil extensão para novos documentos
 
 ---
 
-# Executando o exemplo
+## Performance
 
-```
-cargo run --example validar
-```
+A biblioteca foi desenvolvida com foco em desempenho.
 
----
+Características:
 
-# Qualidade do código
-
-Antes de publicar uma nova versão execute:
-
-```
-cargo fmt
-
-cargo clippy --all-targets --all-features
-
-cargo test
-
-cargo package
-
-cargo publish --dry-run
-```
+- sem dependências externas;
+- sem expressões regulares;
+- apenas operações sobre dígitos;
+- alocação mínima de memória;
+- algoritmos lineares (O(n)).
 
 ---
 
-# MSRV
-
-A versão mínima do compilador Rust suportada (**MSRV**) será definida oficialmente quando o projeto atingir a versão **1.0.0**.
-
-Até lá, recomenda-se utilizar a versão estável mais recente do Rust.
-
----
-
-# Segurança
-
-Esta biblioteca **apenas verifica se um CPF é matematicamente válido**.
-
-Ela **não**:
-
-- consulta a Receita Federal;
-- verifica se o CPF existe;
-- verifica situação cadastral;
-- identifica CPFs cancelados;
-- identifica CPFs pertencentes a pessoas falecidas.
-
-Em outras palavras, um CPF pode ser matematicamente válido e ainda assim não existir na base oficial da Receita Federal.
-
----
-
-# Estrutura do projeto
+## Estrutura do projeto
 
 ```
 .
@@ -221,25 +206,27 @@ Em outras palavras, um CPF pode ser matematicamente válido e ainda assim não e
 │   └── banner.svg
 │
 ├── examples/
-│   └── validar.rs
-│
-├── src/
-│   ├── cpf.rs
-│   └── lib.rs
-│
-├── tests/
+│   ├── cnpj.rs
 │   └── cpf.rs
 │
-├── .editorconfig
-├── .gitignore
-├── CHANGELOG.mds
+├── src/
+│   ├── cnpj.rs
+│   ├── cpf.rs
+│   ├── lib.rs
+│   └── utils.rs
+│
+├── tests/
+│   ├── cnpj.rs
+│   └── cpf.rs
+│
+├── CHANGELOG.md
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── Cargo.toml
 ├── LICENSE-APACHE
 ├── LICENSE-MIT
 ├── README.md
-├── SECURITY.mda
+├── SECURITY.md
 └── SUPPORT.md
 ```
 
@@ -263,21 +250,124 @@ O projeto está organizado da seguinte forma:
 
 ---
 
-# Roadmap
+## Exemplos
 
-## Próximas funcionalidades
-
-- [ ] CNPJ
-- [ ] PIS/PASEP
-- [ ] CNH
-- [ ] Título de Eleitor
-- [ ] Benchmark utilizando Criterion
-- [ ] Suporte a `no_std`
-- [ ] Cobertura de testes superior a 95%
+```
+cargo run --example cnpj
+cargo run --example cpf
+```
 
 ---
 
-# Contribuindo
+## Executando testes
+
+```
+cargo test
+```
+
+---
+
+## Qualidade do código
+
+Antes de cada publicação execute:
+
+```bash
+cargo fmt
+
+cargo clippy --workspace --all-targets --all-features
+
+cargo test
+
+cargo package
+
+cargo publish --dry-run
+```
+
+---
+
+## Roadmap
+
+### Documentos
+
+- [x] CPF
+- [x] CNPJ
+- [ ] PIS/PASEP
+- [ ] CNH
+- [ ] RENAVAM
+- [ ] Título de Eleitor
+
+### Melhorias
+
+- [ ] Benchmark (Criterion)
+- [ ] Fuzz Testing
+- [ ] no_std
+- [ ] Cobertura >95%
+
+---
+
+## Versionamento
+
+Este projeto segue Semantic Versioning (SemVer).
+
+- PATCH → correções de bugs
+- MINOR → novas funcionalidades compatíveis
+- MAJOR → mudanças incompatíveis
+
+Enquanto estiver abaixo da versão 1.0.0, pequenas alterações na API ainda podem ocorrer.
+
+---
+
+## MSRV Policy
+
+Até a versão 1.0.0, a crate acompanha a versão estável mais recente do Rust.
+
+Após a versão 1.0.0 será definida uma MSRV oficial, que somente será alterada em versões major ou quando estritamente necessário.
+
+---
+
+## Segurança
+
+Esta biblioteca verifica apenas a validade matemática dos documentos.
+
+Ela não consulta bases oficiais.
+
+Não verifica:
+
+- Receita Federal
+- situação cadastral
+- cancelamentos
+- óbitos
+- autenticidade jurídica
+
+---
+
+## Changelog
+
+Todas as alterações do projeto seguem o arquivo
+CHANGELOG.md.
+
+Cada versão documenta:
+
+- funcionalidades adicionadas;
+- melhorias;
+- correções;
+- alterações incompatíveis.
+
+---
+
+## Comunidade
+
+Sugestões, dúvidas e contribuições são sempre bem-vindas.
+
+Você pode participar através de:
+
+- Issues
+- Discussions
+- Pull Requests
+
+---
+
+## Contribuindo
 
 Contribuições são muito bem-vindas.
 
@@ -290,7 +380,7 @@ Caso encontre algum problema ou tenha sugestões:
 
 ---
 
-# Licença
+## Licença
 
 Este projeto está licenciado sob os termos das licenças **MIT** ou **Apache License 2.0**, à sua escolha.
 
@@ -301,15 +391,26 @@ Consulte os arquivos:
 
 ---
 
-# Autor
+## Objetivos
 
-José Américo Rodrigues
+Este projeto busca:
 
-GitHub:
-https://github.com/josearodrigues
+- oferecer uma API simples;
+- seguir as boas práticas da comunidade Rust;
+- evitar dependências externas;
+- implementar os algoritmos oficiais;
+- servir como material de estudo da linguagem Rust.
 
 ---
 
-# Agradecimentos
+## Autor
+
+José Américo Rodrigues
+
+- GitHub: https://github.com/josearodrigues
+
+---
+
+## Agradecimentos
 
 Este projeto foi desenvolvido como parte dos estudos da linguagem Rust e tem como objetivo servir como uma biblioteca simples, idiomática e alinhada às recomendações da comunidade Rust.

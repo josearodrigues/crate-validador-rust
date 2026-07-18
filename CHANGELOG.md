@@ -12,6 +12,19 @@ O formato é baseado em [Keep a Changelog](https://keepachangelog.com/) e este p
 
 ### Fixed
 
+## [0.2.0] - 2026-07-17
+
+### Added
+
+- Implementação da validação de CNPJ.
+- Testes de integração para CNPJ.
+- Exemplos de utilização do validador de CNPJ.
+- Refatoração da lógica comum para o módulo interno `utils`.
+
+### Changed
+
+- Reorganização da estrutura interna da biblioteca para facilitar a inclusão de novos validadores.
+
 ## [0.1.2] - 2026-07-17
 
 ### Changed
